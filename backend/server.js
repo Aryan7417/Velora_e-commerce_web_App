@@ -3,12 +3,16 @@ const express = require("express")
 const cors = require("cors")
 const connectDB = require("./config/db.js")
 
+const authRouter = require("./routes/auth.routes.js")
+
 const app = express();
 connectDB()
 
 
 app.use(cors())
 app.use(express.json());
+
+app.use("/api/auth",authRouter)
 
 app.get("/",(req,res)=>{
     res.send("Velora API RUnning ....")
