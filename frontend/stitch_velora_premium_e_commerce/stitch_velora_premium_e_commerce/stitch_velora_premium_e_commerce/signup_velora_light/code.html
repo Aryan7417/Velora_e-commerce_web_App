@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velora - Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container-high": "#e1e8fd",
+                            "surface-container-highest": "#dce2f7",
+                            "tertiary-fixed-dim": "#ffb783",
+                            "primary-container": "#6063ee",
+                            "on-background": "#141b2b",
+                            "surface-container": "#e9edff",
+                            "error": "#ba1a1a",
+                            "surface-dim": "#d3daef",
+                            "surface-bright": "#f9f9ff",
+                            "on-primary": "#ffffff",
+                            "on-secondary-fixed-variant": "#3e4755",
+                            "tertiary-fixed": "#ffdcc5",
+                            "tertiary": "#904900",
+                            "surface-variant": "#dce2f7",
+                            "on-tertiary-fixed": "#301400",
+                            "on-primary-fixed-variant": "#2f2ebe",
+                            "surface-container-low": "#f1f3ff",
+                            "primary-fixed": "#e1e0ff",
+                            "outline-variant": "#c7c4d7",
+                            "error-container": "#ffdad6",
+                            "tertiary-container": "#b55d00",
+                            "on-tertiary": "#ffffff",
+                            "inverse-surface": "#293040",
+                            "inverse-on-surface": "#edf0ff",
+                            "outline": "#767586",
+                            "on-error": "#ffffff",
+                            "on-error-container": "#93000a",
+                            "on-secondary": "#ffffff",
+                            "surface": "#f9f9ff",
+                            "primary": "#4648d4",
+                            "on-surface-variant": "#464554",
+                            "on-primary-container": "#fffbff",
+                            "secondary-fixed": "#d9e3f4",
+                            "primary-fixed-dim": "#c0c1ff",
+                            "surface-tint": "#494bd6",
+                            "secondary": "#555f6d",
+                            "secondary-fixed-dim": "#bdc7d8",
+                            "on-tertiary-container": "#fffbff",
+                            "on-surface": "#141b2b",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-container": "#596372",
+                            "inverse-primary": "#c0c1ff",
+                            "on-tertiary-fixed-variant": "#703700",
+                            "on-secondary-fixed": "#121c28",
+                            "background": "#f9f9ff",
+                            "secondary-container": "#d6e0f1",
+                            "on-primary-fixed": "#07006c"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "md": "16px",
+                            "xl": "32px",
+                            "3xl": "64px",
+                            "margin-desktop": "40px",
+                            "margin-mobile": "16px",
+                            "lg": "24px",
+                            "base": "4px",
+                            "2xl": "48px",
+                            "gutter": "16px",
+                            "sm": "12px",
+                            "xs": "8px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["Inter"],
+                            "price-lg": ["Inter"],
+                            "body-md": ["Inter"],
+                            "label-md": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "body-sm": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "price-lg": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .input-glow:focus {
+            box-shadow: 0 0 0 2px rgba(70, 72, 212, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop antialiased">
+<!-- Note: Top NavBar and Bottom NavBar suppressed due to "Linear/Transactional" intent. -->
+<main class="w-full max-w-[440px] bg-surface-container-lowest rounded-xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] overflow-hidden">
+<div class="p-xl md:p-2xl flex flex-col gap-lg">
+<!-- Header -->
+<div class="text-center space-y-sm">
+<h1 class="text-headline-md font-headline-md text-on-surface">Velora</h1>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Create Account</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Join us to start shopping seamlessly.</p>
+</div>
+<!-- Form -->
+<form action="#" class="flex flex-col gap-md" method="POST">
+<!-- Full Name -->
+<div class="flex flex-col gap-xs">
+<label class="text-body-sm font-body-sm font-bold text-on-surface" for="fullName">Full Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-[10px] text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-0 input-glow transition-all" id="fullName" name="fullName" placeholder="e.g. Jane Doe" required="" type="text"/>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-xs">
+<label class="text-body-sm font-body-sm font-bold text-on-surface" for="email">Email Address</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-[10px] text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-0 input-glow transition-all" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-xs">
+<label class="text-body-sm font-body-sm font-bold text-on-surface" for="password">Password</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-[10px] text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-0 input-glow transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<!-- Confirm Password -->
+<div class="flex flex-col gap-xs">
+<label class="text-body-sm font-body-sm font-bold text-on-surface" for="confirmPassword">Confirm Password</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-[10px] text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-0 input-glow transition-all" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required="" type="password"/>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-sm pt-sm">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" id="terms" name="terms" required="" type="checkbox"/>
+</div>
+<div class="flex-1">
+<label class="text-body-sm font-body-sm text-on-surface-variant cursor-pointer" for="terms">
+                            I agree to the <a class="text-primary hover:text-surface-tint underline decoration-primary/30 underline-offset-2 transition-colors" href="#">Terms and Conditions</a> and <a class="text-primary hover:text-surface-tint underline decoration-primary/30 underline-offset-2 transition-colors" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-md rounded-xl mt-sm hover:bg-surface-tint transition-colors shadow-[0px_1px_3px_rgba(0,0,0,0.05)] flex items-center justify-center gap-sm" type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</form>
+<!-- Login Link -->
+<div class="text-center mt-sm">
+<p class="text-body-md font-body-md text-on-surface-variant">
+                    Already have an account? 
+                    <a class="text-primary font-semibold hover:text-surface-tint transition-colors ml-1" href="#">Log in</a>
+</p>
+</div>
+</div>
+</main>
+</body></html>

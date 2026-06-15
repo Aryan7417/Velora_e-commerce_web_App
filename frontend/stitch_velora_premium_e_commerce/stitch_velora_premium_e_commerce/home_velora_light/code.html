@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velora | Premium Tech &amp; Electronics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c0c1ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#293040",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffbff",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#c7c4d7",
+                        "on-surface-variant": "#464554",
+                        "tertiary-container": "#b55d00",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary-fixed-variant": "#3e4755",
+                        "on-secondary-fixed": "#121c28",
+                        "surface-container-high": "#e1e8fd",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary-container": "#596372",
+                        "surface-container": "#e9edff",
+                        "outline": "#767586",
+                        "tertiary": "#904900",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#d6e0f1",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#dce2f7",
+                        "on-background": "#141b2b",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#494bd6",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#dce2f7",
+                        "primary": "#4648d4",
+                        "primary-container": "#6063ee",
+                        "on-surface": "#141b2b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7d8",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#555f6d",
+                        "surface-dim": "#d3daef",
+                        "secondary-fixed": "#d9e3f4",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed-dim": "#ffb783"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "3xl": "64px",
+                        "2xl": "48px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "price-lg": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar Shared Component -->
+<header class="sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none full-width">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto h-16">
+<!-- Brand Logo -->
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary flex items-center gap-2" href="#">
+                Velora
+            </a>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary pb-1 text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors active:scale-95 duration-150" href="#">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors active:scale-95 duration-150" href="#">Categories</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors active:scale-95 duration-150" href="#">Deals</a>
+</nav>
+<!-- Trailing Actions & Mobile Menu -->
+<div class="flex items-center gap-md text-primary dark:text-inverse-primary">
+<!-- Search Icon (Mobile) / Search Bar (Desktop - Implicitly requested 'on_left' but structural dictates trailing logic usually houses search if not explicitly a bar here. Implementing icon for simplicity based on typical minimalist design) -->
+<button class="md:hidden hover:bg-surface-container rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="hover:bg-surface-container rounded-full p-2 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="hover:bg-surface-container rounded-full p-2 transition-colors active:scale-95 duration-150 hidden md:block">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden hover:bg-surface-container rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative w-full h-[600px] flex items-center justify-center bg-surface-container overflow-hidden">
+<!-- Hero Background Image placeholder via data-alt -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A striking minimalist photography setup featuring premium consumer electronics in a bright, modern studio. The lighting is high-key and soft, creating a clean white aesthetic with subtle, diffused shadows that make the tech products appear to float. The composition uses ample whitespace to evoke a dependable, sophisticated, and effortless brand personality. The overall tone is calm, intuitive, and highly professional, perfect for a high-end tech lifestyle campaign." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuD5hhj2S8jCxEmBIiy0a65E1oqUjzj0xUwr0nTYGKXKzjWAwxgB-RcIWh39_a--uRqfXADVP1aqedI05zRDv3rO5sjLO13FVDiADOUXOK1NDdF0ALG9nnF5IevZxDlyzYEmARobUElbL6Au2n0dRgSs_KfH7femt_k7whdzWY462lTMJZhAPvb3ODGacR1tsKY7rWIY0iGSdZ97vri2DV-mVhffiwsklcOczMi8_72ZJrzaF3vpfQ3S672ATV4DGTrjCCHPT__kc')"></div>
+<!-- Minimal Overlay for Text Contrast if needed, keeping it light -->
+<div class="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center gap-lg">
+<span class="inline-block px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-md font-label-md rounded-DEFAULT tracking-wider uppercase">New Season Arrival</span>
+<h1 class="text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-on-background">
+                    Elevate Your Everyday Tech
+                </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Discover our latest collection of premium smartwatches, immersive audio, and precision keyboards designed for the modern professional.
+                </p>
+<div class="flex gap-md mt-md">
+<button class="bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md px-xl py-3 rounded-xl transition-all shadow-[0px_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] active:scale-95">
+                        Shop Collection
+                    </button>
+<button class="bg-surface hover:bg-surface-container text-primary border border-primary text-label-md font-label-md px-xl py-3 rounded-xl transition-all shadow-[0px_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] active:scale-95">
+                        Explore Deals
+                    </button>
+</div>
+</div>
+</section>
+<!-- Featured Products - Asymmetric Grid -->
+<section class="py-3xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Featured Equipment</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Curated for performance and style.</p>
+</div>
+<a class="hidden md:flex items-center gap-xs text-primary text-label-md font-label-md hover:underline" href="#">
+                    View All <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Large Feature Card -->
+<a class="md:col-span-8 group block relative h-[400px] md:h-[500px] rounded-xl overflow-hidden bg-surface-container-low shadow-[0px_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] transition-all duration-300" href="#">
+<img alt="Smartwatch" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up, high-resolution shot of a sleek, modern smartwatch resting on a smooth, matte light-gray surface. The lighting is soft and ambient, creating gentle highlights on the metallic casing and a subtle drop shadow that anchors the product. The aesthetic is clean, minimalist, and highly professional, avoiding heavy contrast in favor of tonal layers. The image communicates sophisticated wearable technology designed for an effortless lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa-iR5yC-H0nWiGLZicv3y6AYy5Ou6AEk4xq7EAX39HNjA36ipg4yjBtIhHx3A7_osBXvvhVyNGsmBFd_Ui88u8TLMdw7StpLvvORlXN74Ws4ufIBe45WvP13-CBQX2MAKEBCExZCmSgrrdFbBV6Kp-wCTj3i-1V-oSGG7vRdVP3A1GHdPfUnTi7UFLqqcNWliVvLnLEsSHfuVsgc2XecOJdCeeX71KaeGIz-E3IL-mai-xIuMkG0Juo9SMa5OsYQ0_AybHlnfecU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg w-full">
+<span class="inline-block px-2 py-1 bg-surface/90 text-on-surface text-xs font-bold rounded-DEFAULT mb-sm">Bestseller</span>
+<h3 class="text-headline-md font-headline-md text-on-primary">Aura Series Watch</h3>
+<p class="text-body-md font-body-md text-on-primary/80 mt-1 mb-sm">Seamless connectivity on your wrist.</p>
+<span class="text-price-lg font-price-lg text-on-primary">$299.00</span>
+</div>
+</a>
+<!-- Smaller Stacked Cards -->
+<div class="md:col-span-4 flex flex-col gap-lg h-full">
+<!-- Headphones -->
+<a class="group flex-1 relative rounded-xl overflow-hidden bg-surface-container-low shadow-[0px_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col min-h-[200px]" href="#">
+<div class="flex-grow relative h-32">
+<img alt="Headphones" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium pair of over-ear noise-canceling headphones presented against a pure, bright white background. The studio lighting provides a soft, diffused illumination that emphasizes the matte texture of the earcups and the plush cushioning. The composition is strictly minimalist, using a subtle ambient shadow to suggest a level 1 depth elevation. The overall mood is dependable, professional, and focused on acoustic clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKc1rAsEECq9F12pPWkPtqAsPunVVlqYJZLIgi9wJdPz6YIxWqtAajK6WGLR9Zt3N3Ca4JQLB2LGQUOXdolLvLEUAQnuA7w0qIaZVy8VoWK-FElrnWV0xtTt-wtbuI8sKi3m5vF7qz3W4p5guAcW8-tqSQsxKw_DbUX6MBuPbkr9v2umYOBnS7Bjr40x493-BnqONRZ4LwHQ3RtDW3x4IZEqryPYEkIQhdjlU99blWIyL-oGQlWepR0wzWtPCjM_vfGrIoUOveiM"/>
+</div>
+<div class="p-md bg-surface z-10 relative">
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold">Sonic Pro Headphones</h3>
+<div class="flex justify-between items-center mt-xs">
+<span class="text-body-md font-body-md text-on-surface-variant">Active Noise Cancellation</span>
+<span class="text-price-lg font-price-lg text-on-surface">$199.00</span>
+</div>
+</div>
+</a>
+<!-- Keyboard -->
+<a class="group flex-1 relative rounded-xl overflow-hidden bg-surface-container-low shadow-[0px_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col min-h-[200px]" href="#">
+<div class="flex-grow relative h-32">
+<img alt="Keyboard" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end mechanical keyboard with tactile, low-profile switches resting on a clean, uncluttered desk surface. The environment is lit with a soft, bright ambient light that highlights the precision engineering of the keycaps without harsh glare. The aesthetic relies on restricted color palettes, mostly whites and cool grays, to evoke a sense of modern accessibility and workspace calm. The image feels intuitive, productive, and highly refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqEGwSE1UxZgxpuIQtKt9LNb-4tVql-EXT8qaRGVDld7712K9K2RGptPBhUEHh9ufFFi4pIr77ItcBuTUqGojKTH7RyiTst0uw1YtPnDWdolXFzltYcTApGa_59WIzB-Mr41-IUdgqQzTDVoGMAgAVKn5RHPXKdlZNDLmpul6UCTaAD5wa-Dz62_sI-j2-OlHBSlDhYfT8L6tfo7F2DZEF1OUFiYsoxP3w9XpHIqflPkRCdC6cMy7FHVWzTS7anciXcfhUmLuJTyM"/>
+</div>
+<div class="p-md bg-surface z-10 relative">
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold">Ergo Type Mechanical</h3>
+<div class="flex justify-between items-center mt-xs">
+<span class="text-body-md font-body-md text-on-surface-variant">Tactile &amp; Quiet</span>
+<span class="text-price-lg font-price-lg text-on-surface">$149.00</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Mobile View All -->
+<div class="mt-lg md:hidden text-center">
+<a class="inline-flex items-center gap-xs text-primary text-label-md font-label-md hover:underline" href="#">
+                    View All Products <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Value Proposition / Why Shop With Us -->
+<section class="bg-surface-container-lowest border-y border-outline-variant py-2xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-xl">
+<h2 class="text-headline-md font-headline-md text-on-surface">Why Shop Velora</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Committed to an effortless experience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+<!-- Fast Shipping -->
+<div class="flex flex-col items-center text-center p-md md:p-lg group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-md group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]" data-icon="local_shipping">local_shipping</span>
+</div>
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-xs">Fast Shipping</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Complimentary express delivery on all orders over $50. Arrives in 2-3 business days.</p>
+</div>
+<!-- Secure Payment -->
+<div class="flex flex-col items-center text-center p-md md:p-lg group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-md group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]" data-icon="lock">lock</span>
+</div>
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-xs">Secure Payment</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Your transactions are protected with industry-leading 256-bit encryption.</p>
+</div>
+<!-- 24/7 Support -->
+<div class="flex flex-col items-center text-center p-md md:p-lg group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-md group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]" data-icon="support_agent">support_agent</span>
+</div>
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-xs">24/7 Support</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Our dedicated product specialists are available around the clock to assist you.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width bottom mt-auto">
+<div class="w-full py-xl px-margin-desktop max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-inverse-on-surface">
+                Velora
+            </div>
+<nav class="flex flex-wrap justify-center gap-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">Contact Us</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="#">About</a>
+</nav>
+<div class="text-body-sm font-body-sm text-on-surface-variant dark:text-surface-variant">
+                © 2024 Velora. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

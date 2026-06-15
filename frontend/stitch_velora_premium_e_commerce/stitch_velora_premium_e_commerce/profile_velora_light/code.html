@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile | Velora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c0c1ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#293040",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffbff",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#c7c4d7",
+                        "on-surface-variant": "#464554",
+                        "tertiary-container": "#b55d00",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary-fixed-variant": "#3e4755",
+                        "on-secondary-fixed": "#121c28",
+                        "surface-container-high": "#e1e8fd",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary-container": "#596372",
+                        "surface-container": "#e9edff",
+                        "outline": "#767586",
+                        "tertiary": "#904900",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#d6e0f1",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#dce2f7",
+                        "on-background": "#141b2b",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#494bd6",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#dce2f7",
+                        "primary": "#4648d4",
+                        "primary-container": "#6063ee",
+                        "on-surface": "#141b2b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7d8",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#555f6d",
+                        "surface-dim": "#d3daef",
+                        "secondary-fixed": "#d9e3f4",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed-dim": "#ffb783"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "3xl": "64px",
+                        "2xl": "48px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "price-lg": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface shadow-sm sticky top-0 z-50 w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto h-16 border-b border-outline-variant">
+<!-- Left Side: Brand -->
+<div class="flex items-center gap-md">
+<a class="text-headline-md font-headline-md font-bold text-primary hover:text-primary transition-colors" href="#">
+                    Velora
+                </a>
+</div>
+<!-- Middle: Navigation Links -->
+<div class="hidden md:flex items-center gap-lg h-full">
+<a class="h-full flex items-center px-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Shop</a>
+<a class="h-full flex items-center px-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Categories</a>
+<a class="h-full flex items-center px-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Deals</a>
+</div>
+<!-- Right Side: Actions -->
+<div class="flex items-center gap-sm">
+<button aria-label="shopping_cart" class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:scale-95 duration-150 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_cart</span>
+</button>
+<button aria-label="account_circle" class="p-2 text-primary border-b-2 border-primary transition-colors hover:scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Layout Grid -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-xl md:py-2xl grid grid-cols-1 md:grid-cols-12 gap-lg md:gap-xl items-start">
+<!-- Left Sidebar Navigation (Profile Specific) -->
+<aside class="col-span-1 md:col-span-3 bg-surface-container-low rounded-xl shadow-sm p-md flex flex-col gap-sm">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase mb-xs px-2">Account Management</h2>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 font-label-md text-label-md translate-x-1 duration-200 shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)]" href="#">
+<span class="material-symbols-outlined">person</span>
+                    Profile Overview
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-md text-label-md hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+                    Orders
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-md text-label-md hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">favorite</span>
+                    Wishlist
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-md text-label-md hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-md text-label-md hover:bg-surface-container-high rounded-xl transition-all mt-md border-t border-outline-variant pt-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="col-span-1 md:col-span-9 flex flex-col gap-2xl">
+<!-- Profile Header Card (Glassmorphism inspired) -->
+<section class="relative overflow-hidden rounded-xl bg-surface p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] border border-outline-variant/30 flex flex-col md:flex-row items-center md:items-start gap-lg">
+<!-- Abstract Background Accent -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed rounded-full blur-3xl opacity-20 -mr-32 -mt-32 pointer-events-none"></div>
+<div class="relative w-32 h-32 rounded-full overflow-hidden border-4 border-surface shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] shrink-0 bg-surface-container-highest">
+<img alt="Profile Picture" class="w-full h-full object-cover" data-alt="A professional, well-lit studio portrait of a sophisticated person in their early 30s. The background is a clean, minimal white space. The lighting is soft and high-key, casting gentle shadows that emphasize a modern, calm aesthetic. They wear minimal, premium clothing consistent with a high-end e-commerce brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5mDk38gPWAtNnLd26p2r8oTlx15Ti92dz-PzpYLyKoQh6vNMayimRQI0KoyTcJv4YqgxayUT1Wu9BlgyQvKYcRHE3XErj91gVpLLc0sl5ybNy132YXZfkrCV7aXnFtyVQCXAuuX50MFKeQfppnSZ8CN5YEA6F2RtwoUpZQkzoS-_Mi1gLScLAOwaRfGp3P5Y8rXtM7x0wJS2A2-y5H_Vg6A-sClFZ4ijuMm4ikyzSMK-f8nyKDhgAK0A8tTNT7dKWkzEHcBXt8jI"/>
+</div>
+<div class="flex-grow flex flex-col items-center md:items-start text-center md:text-left z-10">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface mb-xs">Alex Morgan</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mb-md">alex.morgan@example.com</p>
+<div class="flex flex-wrap gap-sm justify-center md:justify-start">
+<span class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface px-3 py-1 rounded-DEFAULT text-label-md font-label-md">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                            Verified Member
+                        </span>
+<span class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface px-3 py-1 rounded-DEFAULT text-label-md font-label-md">
+<span class="material-symbols-outlined text-[16px]">loyalty</span>
+                            Gold Tier
+                        </span>
+</div>
+</div>
+<div class="z-10 mt-md md:mt-0">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-lg py-2 rounded-xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] hover:bg-primary-container transition-colors whitespace-nowrap">
+                        Edit Profile
+                    </button>
+</div>
+</section>
+<!-- Bento Grid: Orders & Quick Stats -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Recent Orders Block -->
+<div class="bg-surface rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] border border-outline-variant/30 p-lg flex flex-col">
+<div class="flex justify-between items-center border-b border-outline-variant pb-md mb-md">
+<h3 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+                            Recent Orders
+                        </h3>
+<a class="text-primary hover:text-primary-container text-label-md font-label-md transition-colors" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Order Item 1 -->
+<div class="flex justify-between items-start group hover:bg-surface-container-low p-2 -mx-2 rounded-lg transition-colors cursor-pointer">
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">Order #ORD-8923</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Placed on Oct 24, 2023</p>
+</div>
+<div class="text-right flex flex-col items-end gap-1">
+<span class="text-price-lg font-price-lg text-on-surface">$245.00</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-DEFAULT text-[12px] font-bold uppercase tracking-wider">In Transit</span>
+</div>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/50"></div>
+<!-- Order Item 2 -->
+<div class="flex justify-between items-start group hover:bg-surface-container-low p-2 -mx-2 rounded-lg transition-colors cursor-pointer">
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">Order #ORD-8810</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Placed on Sep 12, 2023</p>
+</div>
+<div class="text-right flex flex-col items-end gap-1">
+<span class="text-price-lg font-price-lg text-on-surface">$89.50</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-DEFAULT text-[12px] font-bold uppercase tracking-wider">Delivered</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Account Information Block -->
+<div class="bg-surface rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] border border-outline-variant/30 p-lg flex flex-col">
+<h3 class="text-headline-md font-headline-md text-on-surface border-b border-outline-variant pb-md mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">contact_mail</span>
+                        Account Info
+                    </h3>
+<dl class="flex flex-col gap-md">
+<div class="grid grid-cols-3 gap-2">
+<dt class="col-span-1 text-label-md font-label-md text-on-surface-variant">Full Name</dt>
+<dd class="col-span-2 text-body-md font-body-md text-on-surface">Alex Morgan</dd>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<dt class="col-span-1 text-label-md font-label-md text-on-surface-variant">Email</dt>
+<dd class="col-span-2 text-body-md font-body-md text-on-surface">alex.morgan@example.com</dd>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<dt class="col-span-1 text-label-md font-label-md text-on-surface-variant">Phone</dt>
+<dd class="col-span-2 text-body-md font-body-md text-on-surface">+1 (555) 123-4567</dd>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<dt class="col-span-1 text-label-md font-label-md text-on-surface-variant">Default Address</dt>
+<dd class="col-span-2 text-body-md font-body-md text-on-surface text-on-surface-variant leading-tight">
+                                123 Minimalist Way, Apt 4B<br/>
+                                San Francisco, CA 94105<br/>
+                                United States
+                            </dd>
+</div>
+</dl>
+</div>
+</section>
+<!-- Wishlist Section -->
+<section class="mt-md">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">favorite</span>
+                        Your Wishlist
+                    </h2>
+<a class="text-primary hover:text-primary-container text-label-md font-label-md transition-colors" href="#">See Entire List</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Product Card 1 -->
+<div class="bg-surface rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] border border-outline-variant/30 overflow-hidden group flex flex-col">
+<div class="bg-surface-bright aspect-square relative overflow-hidden flex items-center justify-center p-sm">
+<img alt="Product Image" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist white smart watch resting on a clean, light gray surface. The lighting is soft and bright, emphasizing the sleek curves of the product. The overall aesthetic is high-end, modern tech photography, fitting a premium minimalist brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2atuzrebSL3kUCDXQzHaOj8TX1LI4DFScRAtdo3u2g2Wg_1b406bDXG1EC7rYlGlVx4LJJmZPkxaXOvxYLbbW9c2CYq1SosdxMlURBQIjXymmlN7p7l_XP_bABf_ofZTUGcVtpRGyClLmNKlP9jwiupSpVxsZ2qIqFH7s1JuYEYlyptF_aVNzw1IwtVxuU6m3sujme8Mg1hwufRezZnwnlsKBV9940D-Vq7Y5Vps0c-oMAoYbkEV3-M-5_Qmb8EfELId4RLH0zyY"/>
+<button aria-label="Remove from wishlist" class="absolute top-3 right-3 bg-surface/80 backdrop-blur-sm p-2 rounded-full shadow-sm text-primary hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow justify-between">
+<div>
+<h4 class="text-body-md font-body-md font-bold text-on-surface mb-1 line-clamp-1">Chronos Smart Watch</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant line-clamp-1 mb-2">Minimalist design, maximum utility.</p>
+</div>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-outline-variant">
+<span class="text-price-lg font-price-lg text-on-surface">$199.00</span>
+<button class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                    Add
+                                </button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] border border-outline-variant/30 overflow-hidden group flex flex-col">
+<div class="bg-surface-bright aspect-square relative overflow-hidden flex items-center justify-center p-sm">
+<img alt="Product Image" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" data-alt="High-end over-ear headphones in a matte dark charcoal finish, placed on a pristine white background. The studio lighting highlights the premium texture of the ear pads and the sleek metal headband. The visual style is crisp, clean, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3yADG_qGjvfJfwgJqeqfZ61TRFUa0PXN1mWRSc2ZrLvyn0fo81Ts9tXuOml9FWcyeOaT_D8EWjoo-TNBHNLpM3TW-EkMh11K0z-eUEVcnUjsuCF2PqwT8DVawXj1PrjdOnxKWFck63PXgbWdaQv_E2ONDqjdA15hCsMTM9Go1tccZF68YsAsLvg-tg6AXKV1aY6ymdxCyb84q-0eWhUnG8erOrDDQNxEwWgE29tlFgqf2OT67q3dEeV0g35TTet6JCzJMCnQMdP0"/>
+<button aria-label="Remove from wishlist" class="absolute top-3 right-3 bg-surface/80 backdrop-blur-sm p-2 rounded-full shadow-sm text-primary hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow justify-between">
+<div>
+<h4 class="text-body-md font-body-md font-bold text-on-surface mb-1 line-clamp-1">Aura Studio Headphones</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant line-clamp-1 mb-2">Noise-cancelling audio perfection.</p>
+</div>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-outline-variant">
+<span class="text-price-lg font-price-lg text-on-surface">$349.00</span>
+<button class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                    Add
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest mt-auto border-t border-outline-variant">
+<div class="w-full py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">Velora</div>
+<div class="flex flex-wrap justify-center gap-md md:gap-lg">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Contact Us</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">About</a>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+                © 2024 Velora. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velora Smartwatch</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c0c1ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#293040",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffbff",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#c7c4d7",
+                        "on-surface-variant": "#464554",
+                        "tertiary-container": "#b55d00",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary-fixed-variant": "#3e4755",
+                        "on-secondary-fixed": "#121c28",
+                        "surface-container-high": "#e1e8fd",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary-container": "#596372",
+                        "surface-container": "#e9edff",
+                        "outline": "#767586",
+                        "tertiary": "#904900",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#d6e0f1",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#dce2f7",
+                        "on-background": "#141b2b",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#494bd6",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#dce2f7",
+                        "primary": "#4648d4",
+                        "primary-container": "#6063ee",
+                        "on-surface": "#141b2b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7d8",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#555f6d",
+                        "surface-dim": "#d3daef",
+                        "secondary-fixed": "#d9e3f4",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed-dim": "#ffb783"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "3xl": "64px",
+                        "2xl": "48px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "price-lg": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant shadow-sm z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto h-16">
+<div class="text-headline-md font-headline-md font-bold text-primary">Velora</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Categories</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Deals</a>
+</nav>
+<div class="flex items-center gap-md">
+<button aria-label="Shopping Cart" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-95 duration-150 p-xs">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+</button>
+<button aria-label="Account" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-95 duration-150 p-xs">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-2xl md:py-3xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2xl md:gap-3xl items-start">
+<!-- Product Image Section -->
+<div class="flex flex-col gap-md sticky top-2xl">
+<div class="bg-surface-container-low rounded-xl overflow-hidden aspect-square flex items-center justify-center p-xl relative shadow-sm transition-shadow hover:shadow-md">
+<!-- Placeholder for the main smartwatch image -->
+<img alt="Velora Premium Smartwatch in Space Gray" class="w-full h-full object-contain drop-shadow-lg transform transition-transform duration-500 hover:scale-105" data-alt="A highly detailed, macro photograph of a sleek, premium smartwatch floating against a soft, bright, minimalist background. The watch features a polished titanium case, a crisp OLED display showing a minimalist analog face, and a sophisticated dark gray elastomer band. The lighting is soft and diffused, creating a serene, high-end commercial aesthetic. The color palette emphasizes clean whites, deep grays, and subtle metallic reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4PaY8bn4PXX7SsKquFHUjj5ODIvdwVaOtA8Zu2nvAZgPWYWaa3JVBDdThrDSTbkCTF2-GYCfsVMeFH1qIF-ucKPq2rwQFtr0qM1NcNizcQNeT9vdTsXqklptFQrNID8txWXUoNgtjZlkm4ee0ItcoOSgnNPBmdGUNZhxXa5z2m-BP9DVDrnn1XZmR6GIpwHkCI2V34W8x4OeB2KA8y9kk3tNLaFlWoBpotxzLQpZtWMLmGQUO5kkhVU-oqeVpCrQTyXgb1i7R8Qc"/>
+</div>
+<!-- Thumbnails -->
+<div class="grid grid-cols-4 gap-sm">
+<button class="bg-surface-container-low rounded-lg aspect-square p-sm border-2 border-primary overflow-hidden">
+<img alt="Front View Thumbnail" class="w-full h-full object-contain" data-alt="A small, high-quality thumbnail image showing the front face of a premium smartwatch against a clean white background. Minimalist lighting, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBASiA2vR2Q50AzmiBrCkmAOrwuQb8XBiDUEYP2aMBl9RaK5zr4dJjMyxFdTxk00JU8FGrS4cUuzpzsMV0GlCVUfxYNzmE1_0aK4h9d4tN18wihGgdNaApSm1lmVYOYldM0NTSBpkApZq5MmQUo-xfWjrK7wGhNzkm-NHqTuWYCysFA1elvYAllnfNhGop4HdUVcwbCEhlX-Ly1mtcNamhZ_jmetX7Z_rUjt3svqTGGzP02Zg9uQij5PaOk0TF6Mn3cSLgZlIfxf1o"/>
+</button>
+<button class="bg-surface-container-low rounded-lg aspect-square p-sm border-2 border-transparent hover:border-outline-variant overflow-hidden transition-colors">
+<img alt="Side View Thumbnail" class="w-full h-full object-contain" data-alt="A small, high-quality thumbnail image showing the sleek profile and side button of a premium smartwatch against a clean white background. Minimalist lighting, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcTO-utha8LFTbLLLo0n2cBLWidjzwY0Gwt3_BBkTivu_1soHrM5TNgVPmdcW8VBTSqK_BO-ZRa6-m5yCYoB6MAhgXn_T4VhCmQNQiEZksoLY3azg_dvyT1T7mwpKJybnbQ_uybTG1NRZKs3ue_7Vnq0bXbfZGydgd-GeO_rYtXGOYcQp4Soa9ghU1bXf1fotjtangOhepCCaqPgZE3A9VzPD8EASKyKeYvsWqFapY47qs5YU5d6_0MkMMVtoJmJ-wimGyjn3ctkw"/>
+</button>
+<button class="bg-surface-container-low rounded-lg aspect-square p-sm border-2 border-transparent hover:border-outline-variant overflow-hidden transition-colors">
+<img alt="Band View Thumbnail" class="w-full h-full object-contain" data-alt="A small, high-quality thumbnail image focusing on the textured elastomer band and clasp of a premium smartwatch against a clean white background. Minimalist lighting, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQKKgl2jq6L-za7XYpN5LeRKbB2iawmA88oxHY-ru-9-TJIQHgS2ws7zSX56ZHUuagdxSwtd4MwHhTQRcqLKbbW72wSFfHrOlXUyvvKd_6dE7pIovA4gD5asmsl7TPKkaMSw2iTJDELHwS3GHMU20iM_bhUFkq-VW1J4bcQu4-4uP9f_sEcDSGLuFW7lbCK7G11IlG4_Cv5VXxrek2uPgnl8jhBdzRXAHPrg3WSFvjVGjPsiTeUdj7Oc84wZBN2Y9akAVJZ7vYLs8"/>
+</button>
+<button class="bg-surface-container-low rounded-lg aspect-square p-sm border-2 border-transparent hover:border-outline-variant overflow-hidden flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">play_circle</span>
+</button>
+</div>
+</div>
+<!-- Product Details Section -->
+<div class="flex flex-col gap-lg">
+<!-- Header -->
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="bg-surface-container-high text-on-surface-variant text-label-md font-label-md px-sm py-base rounded-md">New Arrival</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-on-background">Velora Apex Pro</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">The ultimate titanium smartwatch designed for peak performance and everyday elegance.</p>
+</div>
+<!-- Price -->
+<div class="flex items-baseline gap-sm">
+<span class="text-display-lg font-display-lg text-primary">$499.00</span>
+<span class="text-body-md font-body-md text-outline line-through">$549.00</span>
+</div>
+<div class="h-px w-full bg-outline-variant my-md"></div>
+<!-- Color Selection -->
+<div class="flex flex-col gap-md">
+<span class="text-label-md font-label-md text-on-background">Color: <span class="font-normal text-on-surface-variant">Space Gray</span></span>
+<div class="flex items-center gap-md">
+<button aria-label="Space Gray" class="w-10 h-10 rounded-full bg-[#3c3c43] ring-2 ring-offset-2 ring-primary ring-offset-background"></button>
+<button aria-label="Silver" class="w-10 h-10 rounded-full bg-[#e3e4e5] ring-2 ring-offset-2 ring-transparent hover:ring-outline-variant ring-offset-background transition-all"></button>
+<button aria-label="Midnight Black" class="w-10 h-10 rounded-full bg-[#1c1c1e] ring-2 ring-offset-2 ring-transparent hover:ring-outline-variant ring-offset-background transition-all"></button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-sm mt-lg">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md py-md rounded-xl transition-colors shadow-sm hover:shadow-md flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                        Add to Cart
+                    </button>
+<button class="w-full bg-surface hover:bg-surface-container-low text-primary border border-primary text-label-md font-label-md py-md rounded-xl transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+                        Add to Wishlist
+                    </button>
+</div>
+<div class="h-px w-full bg-outline-variant my-md"></div>
+<!-- Specifications Bento Grid -->
+<div class="flex flex-col gap-md">
+<h2 class="text-headline-md font-headline-md text-on-background mb-sm">Key Specifications</h2>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Battery -->
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-xs shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-[28px]">battery_charging_full</span>
+<span class="text-label-md font-label-md text-on-background mt-xs">Battery Life</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Up to 14 days on a single charge.</span>
+</div>
+<!-- Material -->
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-xs shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-[28px]">diamond</span>
+<span class="text-label-md font-label-md text-on-background mt-xs">Material</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Aerospace-grade Titanium.</span>
+</div>
+<!-- Connectivity -->
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-xs shadow-sm hover:shadow-md transition-shadow col-span-2">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[28px]">wifi_tethering</span>
+<span class="text-label-md font-label-md text-on-background">Connectivity</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Bluetooth 5.3, Wi-Fi, and LTE cellular options available for seamless syncing and standalone connectivity.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest full-width bottom border-t border-outline-variant mt-auto">
+<div class="w-full py-xl px-margin-desktop max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">Velora</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">© 2024 Velora. All rights reserved.</div>
+<nav class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Contact Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">About</a>
+</nav>
+</div>
+</footer>
+</body></html>
