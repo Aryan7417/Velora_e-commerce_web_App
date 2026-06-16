@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProductById } from '../data/products';
@@ -9,11 +11,12 @@ export const ProductDetails = () => {
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
 
-  const product = getProductById(id);
+  //const product = getProductById(id);
   
   const [activeImage, setActiveImage] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [feedbackMsg, setFeedbackMsg] = useState("");
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     if (product) {
@@ -23,6 +26,19 @@ export const ProductDetails = () => {
       }
     }
   }, [product]);
+
+  useEffect(() => {
+  const localProduct = getProductById(id);
+
+  if (localProduct) {
+    setProduct(localProduct);
+  } else {
+    axios
+      .get(`http://localhost:2000/api/products/${id}`)
+      .then((res) => setProduct(res.data))
+      .catch((err) => console.log(err));
+  }
+}, [id]);
 
   if (!product) {
     return (

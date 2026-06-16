@@ -7,7 +7,10 @@ export const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
 
-  const isFavorited = isInWishlist(product.id);
+  const isFavorited = isInWishlist(product.id || product._id);
+
+
+  //console.log(product);
 
   // Determine badge
   let badgeText = null;
@@ -44,7 +47,7 @@ export const ProductCard = ({ product }) => {
         </button>
 
         {/* Product Image Link */}
-        <Link to={`/product/${product.id}`} className="w-full h-full flex items-center justify-center">
+        <Link to={`/product/${product.id || product._id}`} className="w-full h-full flex items-center justify-center">
           <img 
             src={product.image} 
             alt={product.name} 

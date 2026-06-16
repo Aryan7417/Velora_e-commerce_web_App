@@ -1,3 +1,27 @@
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+
+// const [productList, setProductList] = useState([]);
+
+// useEffect(() => {
+//   axios
+//     .get("http://localhost:2000/api/products")
+//     .then((res) => {
+//       setProductList(res.data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }, []);
+
+
+
+
+
+
+
+
+
 export const products = [
   {
     id: "1",
