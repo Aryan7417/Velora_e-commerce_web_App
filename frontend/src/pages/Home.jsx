@@ -81,7 +81,7 @@ export const Home = () => {
                   {auraWatch.description.split('.')[0]}.
                 </p>
                 <span className="text-price-lg font-price-lg text-on-primary">
-                  ${auraWatch.price.toFixed(2)}
+                  ₹{auraWatch.price.toFixed(2)}
                 </span>
               </div>
             </Link>
@@ -108,7 +108,7 @@ export const Home = () => {
                   </h3>
                   <div className="flex justify-between items-center mt-xs">
                     <span className="text-body-sm text-on-surface-variant line-clamp-1">Active Noise Cancellation</span>
-                    <span className="text-price-lg font-price-lg text-on-surface">${sonicHeadphones.price.toFixed(2)}</span>
+                    <span className="text-price-lg font-price-lg text-on-surface">₹{sonicHeadphones.price.toFixed(2)}</span>
                   </div>
                 </div>
               </Link>
@@ -133,7 +133,7 @@ export const Home = () => {
                   </h3>
                   <div className="flex justify-between items-center mt-xs">
                     <span className="text-body-sm text-on-surface-variant line-clamp-1">Tactile & Quiet</span>
-                    <span className="text-price-lg font-price-lg text-on-surface">${ergoKeyboard.price.toFixed(2)}</span>
+                    <span className="text-price-lg font-price-lg text-on-surface">₹{ergoKeyboard.price.toFixed(2)}</span>
                   </div>
                 </div>
               </Link>
@@ -163,7 +163,7 @@ export const Home = () => {
                 <span className="material-symbols-outlined text-[32px]">local_shipping</span>
               </div>
               <h3 className="text-body-lg font-body-lg text-on-surface font-semibold mb-xs">Fast Shipping</h3>
-              <p className="text-body-sm font-body-sm text-on-surface-variant">Complimentary express delivery on all orders over $50. Arrives in 2-3 business days.</p>
+              <p className="text-body-sm font-body-sm text-on-surface-variant">Complimentary express delivery on all orders over ₹50. Arrives in 2-3 business days.</p>
             </div>
             {/* Secure Payment */}
             <div className="flex flex-col items-center text-center p-md md:p-lg group">

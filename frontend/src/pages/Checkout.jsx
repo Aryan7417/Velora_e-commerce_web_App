@@ -264,11 +264,40 @@ export const Checkout = () => {
                     onChange={(e) => setStateVal(e.target.value)}
                     className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md cursor-pointer"
                   >
-                    <option>Select</option>
-                    <option>CA</option>
-                    <option>NY</option>
-                    <option>TX</option>
-                    <option>WA</option>
+                    <option value="">Select State</option>
+                    <option>Andhra Pradesh</option>
+                    <option>Arunachal Pradesh</option>
+                    <option>Assam</option>
+                    <option>Bihar</option>
+                    <option>Chhattisgarh</option>
+                    <option>Goa</option>
+                    <option>Gujarat</option>
+                    <option>Haryana</option>
+                    <option>Himachal Pradesh</option>
+                    <option>Jharkhand</option>
+                    <option>Karnataka</option>
+                    <option>Kerala</option>
+                    <option>Madhya Pradesh</option>
+                    <option>Maharashtra</option>
+                    <option>Manipur</option>
+                    <option>Meghalaya</option>
+                    <option>Mizoram</option>
+                    <option>Nagaland</option>
+                    <option>Odisha</option>
+                    <option>Punjab</option>
+                    <option>Rajasthan</option>
+                    <option>Sikkim</option>
+                    <option>Tamil Nadu</option>
+                    <option>Telangana</option>
+                    <option>Tripura</option>
+                    <option>Uttar Pradesh</option>
+                    <option>Uttarakhand</option>
+                    <option>West Bengal</option>
+                    <option>Delhi</option>
+                    <option>Jammu and Kashmir</option>
+                    <option>Ladakh</option>
+                    <option>Chandigarh</option>
+                    <option>Puducherry</option>
                   </select>
                 </div>
                 <div>
@@ -361,7 +390,7 @@ export const Checkout = () => {
               </div>
 
               {/* PayPal Option */}
-              <div className={`border rounded-xl p-md transition-all cursor-pointer ${paymentMethod === 'paypal' ? 'border-primary bg-surface-container-low' : 'border-outline-variant hover:bg-surface-container-low/50'}`}>
+              <div className={`border rounded-xl p-md transition-all cursor-pointer ${paymentMethod === 'Online Paynment' ? 'border-primary bg-surface-container-low' : 'border-outline-variant hover:bg-surface-container-low/50'}`}>
                 <div className="flex items-center gap-xs">
                   <input
                     type="radio"
@@ -372,7 +401,7 @@ export const Checkout = () => {
                     className="w-4 h-4 text-primary focus:ring-primary border-outline cursor-pointer"
                   />
                   <label htmlFor="paypal" className="font-label-md text-label-md text-on-surface cursor-pointer flex items-center justify-between w-full select-none">
-                    <span>PayPal</span>
+                    <span>Online payment</span>
                     <span className="material-symbols-outlined text-primary">account_balance_wallet</span>
                   </label>
                 </div>
@@ -398,7 +427,7 @@ export const Checkout = () => {
                     <p className="font-body-sm text-body-sm text-on-surface-variant">Qty: {item.quantity} • {item.selectedColor}</p>
                   </div>
                   <div className="font-price-lg text-price-lg text-on-surface">
-                    ${(item.product.price * item.quantity).toFixed(2)}
+                    ₹{(item.product.price * item.quantity).toFixed(2)}
                   </div>
                 </div>
               ))}
@@ -408,7 +437,7 @@ export const Checkout = () => {
             <div className="flex flex-col gap-sm mb-xl text-body-md font-body-md text-left">
               <div className="flex justify-between text-on-surface-variant">
                 <span>Subtotal ({cartCount} items)</span>
-                <span>${cartSubtotal.toFixed(2)}</span>
+                <span>₹{cartSubtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-on-surface-variant">
                 <span>Shipping</span>
@@ -416,12 +445,12 @@ export const Checkout = () => {
               </div>
               <div className="flex justify-between text-on-surface-variant">
                 <span>Taxes (8%)</span>
-                <span>${taxEstimate.toFixed(2)}</span>
+                <span>₹{taxEstimate.toFixed(2)}</span>
               </div>
 
               <div className="border-t border-outline-variant/50 pt-md mt-sm flex justify-between items-center text-on-surface">
                 <span className="font-headline-md text-headline-md">Total</span>
-                <span className="font-price-lg text-price-lg text-primary">${cartTotal.toFixed(2)}</span>
+                <span className="font-price-lg text-price-lg text-primary">₹{cartTotal.toFixed(2)}</span>
               </div>
             </div>
 

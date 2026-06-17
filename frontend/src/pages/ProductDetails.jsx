@@ -134,15 +134,15 @@ export const ProductDetails = () => {
             {product.oldPrice ? (
               <>
                 <span className="text-display-lg font-display-lg text-primary">
-                  ${product.price.toFixed(2)}
+                  ₹{product.price.toFixed(2)}
                 </span>
                 <span className="text-body-md font-body-md text-outline line-through">
-                  ${product.oldPrice.toFixed(2)}
+                  ₹{product.oldPrice.toFixed(2)}
                 </span>
               </>
             ) : (
               <span className="text-display-lg font-display-lg text-primary">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
             )}
           </div>

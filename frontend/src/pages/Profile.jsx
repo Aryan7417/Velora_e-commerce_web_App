@@ -190,7 +190,7 @@ export const Profile = () => {
                           <p className="text-body-sm font-body-sm text-on-surface-variant">Placed on  {new Date(order.createdAt).toLocaleDateString()}</p>
                         </div>
                         <div className="text-right flex flex-col items-end gap-1">
-                          <span className="text-price-lg font-price-lg text-on-surface">${order.totalAmount.toFixed(2)}</span>
+                          <span className="text-price-lg font-price-lg text-on-surface">₹{order.totalAmount.toFixed(2)}</span>
                           <span className="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-DEFAULT text-[12px] font-bold uppercase tracking-wider">
                             {order.status}
                           </span>
@@ -258,7 +258,7 @@ export const Profile = () => {
                     </div>
                     <div className="flex items-center gap-lg">
                       <div className="text-right">
-                        <p className="text-price-lg font-bold text-primary">${order.totalAmount.toFixed(2)}</p>
+                        <p className="text-price-lg font-bold text-primary">₹{order.totalAmount.toFixed(2)}</p>
                         <span className="inline-block bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[12px] font-bold uppercase tracking-wider">
                           {order.status}
                         </span>
@@ -302,7 +302,7 @@ export const Profile = () => {
                         <p className="text-body-sm text-on-surface-variant line-clamp-1 mb-2">{product.description}</p>
                       </div>
                       <div className="flex justify-between items-end mt-auto pt-sm border-t border-outline-variant/50">
-                        <span className="text-price-lg font-price-lg text-on-surface">${product.price.toFixed(2)}</span>
+                        <span className="text-price-lg font-price-lg text-on-surface">₹{product.price.toFixed(2)}</span>
                         <button
                           onClick={() => addToCart(product, 1)}
                           className="text-primary font-label-md text-label-md hover:underline flex items-center gap-1 active:scale-95 duration-100"

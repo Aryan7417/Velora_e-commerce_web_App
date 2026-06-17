@@ -48,9 +48,9 @@ export const FilterSidebar = ({
               className="w-full accent-primary bg-surface-container h-1 rounded-full appearance-none outline-none cursor-pointer"
             />
             <div className="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
-              <span>$0</span>
-              <span className="font-semibold text-primary">${maxPrice}</span>
-              <span>$1,000+</span>
+              <span>₹0</span>
+              <span className="font-semibold text-primary">₹{maxPrice}</span>
+              <span>₹1,000+</span>
             </div>
           </div>
         </div>

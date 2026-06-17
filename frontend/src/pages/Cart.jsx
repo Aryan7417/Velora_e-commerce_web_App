@@ -84,7 +84,7 @@ export const Cart = () => {
                       </p>
                     </div>
                     <span className="text-price-lg font-price-lg text-primary">
-                      ${(product.price * quantity).toFixed(2)}
+                      ₹{(product.price * quantity).toFixed(2)}
                     </span>
                   </div>
                   
@@ -140,13 +140,13 @@ export const Cart = () => {
           <div className="flex flex-col gap-sm border-b border-outline-variant pb-md mb-md">
             <div className="flex justify-between text-body-md font-body-md text-on-surface-variant">
               <span>Subtotal ({cartCount} items)</span>
-              <span>${rawSubtotal.toFixed(2)}</span>
+              <span>₹{rawSubtotal.toFixed(2)}</span>
             </div>
             
             {promoCode && (
               <div className="flex justify-between text-body-md font-body-md text-green-700">
                 <span>Discount ({promoDiscount}%)</span>
-                <span>-${discountAmount.toFixed(2)}</span>
+                <span>-₹{discountAmount.toFixed(2)}</span>
               </div>
             )}
 
@@ -156,14 +156,14 @@ export const Cart = () => {
             </div>
             <div className="flex justify-between text-body-md font-body-md text-on-surface-variant">
               <span>Tax Estimate (8%)</span>
-              <span>${taxEstimate.toFixed(2)}</span>
+              <span>₹{taxEstimate.toFixed(2)}</span>
             </div>
           </div>
 
           <div className="flex justify-between items-center mb-xl">
             <span className="text-body-lg font-body-lg font-bold text-on-surface">Estimated Total</span>
             <span className="text-headline-md font-headline-md font-bold text-primary">
-              ${cartTotal.toFixed(2)}
+              ₹{cartTotal.toFixed(2)}
             </span>
           </div>
 

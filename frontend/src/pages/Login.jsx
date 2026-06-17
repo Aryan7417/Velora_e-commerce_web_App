@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-export const Login = () => {
+
+
+export const Login =  () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -10,7 +12,32 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e) => {
+useEffect(() => {
+  window.google.accounts.id.initialize({
+    client_id:
+      "563239498552-t2ud2h2u55p62hhnh4ppll2289k4qq0f.apps.googleusercontent.com",
+
+    callback: handleCredentialResponse,
+  });
+
+  window.google.accounts.id.renderButton(
+    document.getElementById("googleSignInDiv"),
+    {
+      theme: "outline",
+      size: "large",
+    }
+  );
+}, []);
+
+const handleCredentialResponse = (response) => {
+  console.log("Google Token:", response.credential);
+};
+
+
+
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
       setErrorMsg("Please fill in all fields.");
@@ -18,7 +45,7 @@ export const Login = () => {
     }
 
     // Simulate login
-    const success = login(email, password);
+    const success = await login(email, password);
     if (success) {
       navigate('/profile');
     } else {
@@ -134,12 +161,15 @@ export const Login = () => {
             </div>
 
             {/* Social Buttons */}
+          
+          <div id="googleSignInDiv">
+
             <div className="grid grid-cols-2 gap-sm">
               <button
                 type="button"
                 onClick={() => alert("Simulated Google Sign-In")}
                 className="w-full inline-flex justify-center py-2 px-4 border border-outline-variant rounded-lg shadow-sm bg-surface-container-lowest text-label-md font-label-md text-on-surface hover:bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200 cursor-pointer"
-              >
+                >
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path>
                 </svg>
@@ -149,13 +179,15 @@ export const Login = () => {
                 type="button"
                 onClick={() => alert("Simulated Facebook Sign-In")}
                 className="w-full inline-flex justify-center py-2 px-4 border border-outline-variant rounded-lg shadow-sm bg-surface-container-lowest text-label-md font-label-md text-on-surface hover:bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200 cursor-pointer"
-              >
+                >
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2c-0.55,0-1,0.45-1,1v2h3v3h-3v6.95C18.05,21.45,22,17.19,22,12z"></path>
                 </svg>
                 Facebook
               </button>
             </div>
+          
+          </div>
           </form>
         </div>
 

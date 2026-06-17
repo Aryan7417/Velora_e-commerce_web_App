@@ -70,15 +70,15 @@ export const ProductCard = ({ product }) => {
             {product.oldPrice ? (
               <>
                 <span className="text-body-sm text-on-surface-variant line-through">
-                  ${product.oldPrice.toFixed(2)}
+                  ₹{product.oldPrice.toFixed(2)}
                 </span>
                 <span className="text-price-lg font-price-lg text-error">
-                  ${product.price.toFixed(2)}
+                  ₹{product.price.toFixed(2)}
                 </span>
               </>
             ) : (
               <span className="text-price-lg font-price-lg text-on-surface">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
             )}
           </div>
