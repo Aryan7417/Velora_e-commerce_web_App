@@ -97,32 +97,28 @@ export const Checkout = () => {
     // // Clear shopping cart
     // clearCart();
 
-console.log("USER =", user);
+    console.log("USER =", user);
 
-const orderData = {
-  user: user?._id,
-  products: cartItems.map((item) => ({
-    product: item.product._id || item.product.id,
-    quantity: item.quantity,
-  })),
-  totalAmount: cartTotal,
-};
-
-console.log("ORDER DATA =", orderData);
+    const orderData = {
+      user: user?.id || user?._id,
+      products: cartItems.map((item) => ({
+        product: item.product._id || item.product.id,
+        quantity: item.quantity,
+      })),
+      totalAmount: cartTotal,
+    };
+    console.log("ORDER DATA =", orderData);
 
 
 
     try {
 
       const orderData = {
-        user: user?._id,
-        // user: user?.id || user?._id,
-
+        user: user?.id || user?._id,
         products: cartItems.map((item) => ({
           product: item.product._id || item.product.id,
           quantity: item.quantity,
         })),
-
         totalAmount: cartTotal,
       };
 

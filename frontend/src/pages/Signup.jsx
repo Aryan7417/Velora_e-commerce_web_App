@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -13,7 +14,7 @@ export const Signup = () => {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !password || !confirmPassword) {
       setErrorMsg("Please fill in all fields.");
@@ -31,12 +32,36 @@ export const Signup = () => {
     }
 
     // Simulate signup
-    const success = signup(name, email, password);
-    if (success) {
-      navigate('/profile');
-    } else {
-      setErrorMsg("Registration failed. Please try again.");
+
+    try {
+  const res = await axios.post(
+    "http://localhost:2000/api/auth/register",
+    {
+      name,
+      email,
+      password,
     }
+  );
+
+  console.log(res.data);
+
+  navigate("/login");
+
+} catch (error) {
+  setErrorMsg(
+    error.response?.data?.message ||
+    "Registration failed"
+  );
+}
+    // const success = signup(name, email, password);
+
+    // // if (success) {
+    // //   navigate('/profile');
+    // // }
+    
+    // // else {
+    // //   setErrorMsg("Registration failed. Please try again.");
+    // // }
   };
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -9,7 +10,7 @@ export const Profile = () => {
   const { wishlistItems, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const navigate = useNavigate();
-  
+
   const [activeTab, setActiveTab] = useState('overview'); // overview, orders, wishlist, settings
 
   // Edit details form states
@@ -20,6 +21,7 @@ export const Profile = () => {
   const [stateVal, setStateVal] = useState("");
   const [zip, setZip] = useState("");
   const [editSuccess, setEditSuccess] = useState(false);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     if (!user) {
@@ -33,6 +35,26 @@ export const Profile = () => {
       setZip(user.address?.zip || "");
     }
   }, [user, navigate]);
+
+
+
+
+
+useEffect(() => {
+  if (user?.id) {
+    axios
+      .get(`http://localhost:2000/api/order/user/${user.id}`)
+      .then((res) => {
+        setOrders(res.data.orders);
+      })
+      .catch((err) => console.log(err));
+  }
+}, [user]);
+
+
+useEffect(() => {
+  console.log("Orders State =", orders);
+}, [orders]);
 
   if (!user) {
     return null; // Redirecting...
@@ -55,7 +77,7 @@ export const Profile = () => {
         city,
         state: stateVal,
         zip,
-        country: "United States"
+        country: "India"
       }
     };
     updateProfile(updatedUser);
@@ -81,7 +103,7 @@ export const Profile = () => {
           </button>
           <button onClick={() => setActiveTab('orders')} className={tabClass('orders')}>
             <span className="material-symbols-outlined block">receipt_long</span>
-            Orders ({user.orders?.length || 0})
+            Orders ({orders.length})
           </button>
           <button onClick={() => setActiveTab('wishlist')} className={tabClass('wishlist')}>
             <span className="material-symbols-outlined block">favorite</span>
@@ -100,19 +122,19 @@ export const Profile = () => {
 
       {/* Main Content Area */}
       <div className="col-span-1 md:col-span-9 flex flex-col gap-2xl">
-        
+
         {/* Profile Header Card */}
         <section className="relative overflow-hidden rounded-xl bg-surface p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] border border-outline-variant/30 flex flex-col md:flex-row items-center md:items-start gap-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary-fixed rounded-full blur-3xl opacity-20 -mr-32 -mt-32 pointer-events-none"></div>
-          
+
           <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-surface shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] shrink-0 bg-surface-container-highest">
-            <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5mDk38gPWAtNnLd26p2r8oTlx15Ti92dz-PzpYLyKoQh6vNMayimRQI0KoyTcJv4YqgxayUT1Wu9BlgyQvKYcRHE3XErj91gVpLLc0sl5ybNy132YXZfkrCV7aXnFtyVQCXAuuX50MFKeQfppnSZ8CN5YEA6F2RtwoUpZQkzoS-_Mi1gLScLAOwaRfGp3P5Y8rXtM7x0wJS2A2-y5H_Vg6A-sClFZ4ijuMm4ikyzSMK-f8nyKDhgAK0A8tTNT7dKWkzEHcBXt8jI" 
-              alt="Profile Picture" 
-              className="w-full h-full object-cover" 
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5mDk38gPWAtNnLd26p2r8oTlx15Ti92dz-PzpYLyKoQh6vNMayimRQI0KoyTcJv4YqgxayUT1Wu9BlgyQvKYcRHE3XErj91gVpLLc0sl5ybNy132YXZfkrCV7aXnFtyVQCXAuuX50MFKeQfppnSZ8CN5YEA6F2RtwoUpZQkzoS-_Mi1gLScLAOwaRfGp3P5Y8rXtM7x0wJS2A2-y5H_Vg6A-sClFZ4ijuMm4ikyzSMK-f8nyKDhgAK0A8tTNT7dKWkzEHcBXt8jI"
+              alt="Profile Picture"
+              className="w-full h-full object-cover"
             />
           </div>
-          
+
           <div className="flex-grow flex flex-col items-center md:items-start text-center md:text-left z-10">
             <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface mb-xs">
               {user.name}
@@ -129,9 +151,9 @@ export const Profile = () => {
               </span>
             </div>
           </div>
-          
+
           <div className="z-10 mt-md md:mt-0">
-            <button 
+            <button
               onClick={() => setActiveTab('settings')}
               className="bg-primary text-on-primary font-label-md text-label-md px-lg py-2 rounded-xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08)] hover:bg-primary-container transition-colors whitespace-nowrap active:scale-95 duration-100"
             >
@@ -155,16 +177,16 @@ export const Profile = () => {
                 </button>
               </div>
               <div className="flex flex-col gap-4">
-                {user.orders && user.orders.length > 0 ? (
-                  user.orders.slice(0, 2).map((order) => (
-                    <React.Fragment key={order.id}>
+                {orders.length > 0? (
+                  orders.slice(0, 2).map((order) => (
+                    <React.Fragment key={order._id}>
                       <div className="flex justify-between items-start group hover:bg-surface-container-low p-2 -mx-2 rounded-lg transition-colors cursor-pointer">
                         <div>
-                          <p className="text-body-md font-body-md font-bold text-on-surface">Order #{order.id}</p>
-                          <p className="text-body-sm font-body-sm text-on-surface-variant">Placed on {order.date}</p>
+                          <p className="text-body-md font-body-md font-bold text-on-surface">Order #{order._id.slice(-6)}</p>
+                          <p className="text-body-sm font-body-sm text-on-surface-variant">Placed on  {new Date(order.createdAt).toLocaleDateString()}</p>
                         </div>
                         <div className="text-right flex flex-col items-end gap-1">
-                          <span className="text-price-lg font-price-lg text-on-surface">${order.amount.toFixed(2)}</span>
+                          <span className="text-price-lg font-price-lg text-on-surface">${order.totalAmount.toFixed(2)}</span>
                           <span className="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-DEFAULT text-[12px] font-bold uppercase tracking-wider">
                             {order.status}
                           </span>
@@ -203,8 +225,8 @@ export const Profile = () => {
                   <dd className="col-span-2 text-body-md font-body-md text-on-surface text-on-surface-variant leading-tight">
                     {user.address?.street ? (
                       <>
-                        {user.address.street}<br/>
-                        {user.address.city}, {user.address.state} {user.address.zip}<br/>
+                        {user.address.street}<br />
+                        {user.address.city}, {user.address.state} {user.address.zip}<br />
                         {user.address.country}
                       </>
                     ) : (
@@ -222,17 +244,17 @@ export const Profile = () => {
             <h3 className="text-headline-md font-headline-md text-on-surface border-b border-outline-variant pb-md mb-md">
               Order History
             </h3>
-            {user.orders && user.orders.length > 0 ? (
+            {orders.length > 0? (
               <div className="flex flex-col gap-sm">
-                {user.orders.map((order) => (
+                {orders.map((order) => (
                   <div key={order.id} className="flex justify-between items-center bg-surface-container-low rounded-xl p-md border border-outline-variant/20 hover:border-outline transition-colors">
                     <div>
-                      <p className="text-body-md font-bold text-on-surface">Order #{order.id}</p>
-                      <p className="text-body-sm text-on-surface-variant">Date: {order.date}</p>
+                      <p className="text-body-md font-bold text-on-surface">Order #{order._id.slice(-6)}</p>
+                      <p className="text-body-sm text-on-surface-variant">Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                     </div>
                     <div className="flex items-center gap-lg">
                       <div className="text-right">
-                        <p className="text-price-lg font-bold text-primary">${order.amount.toFixed(2)}</p>
+                        <p className="text-price-lg font-bold text-primary">${order.totalAmount.toFixed(2)}</p>
                         <span className="inline-block bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[12px] font-bold uppercase tracking-wider">
                           {order.status}
                         </span>
@@ -260,7 +282,7 @@ export const Profile = () => {
                   <div key={product.id} className="bg-surface border border-outline-variant/30 rounded-xl overflow-hidden group flex flex-col">
                     <div className="bg-surface-bright aspect-square relative overflow-hidden flex items-center justify-center p-sm">
                       <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
-                      <button 
+                      <button
                         onClick={() => removeFromWishlist(product.id)}
                         className="absolute top-3 right-3 bg-surface/85 backdrop-blur-sm p-2 rounded-full shadow-sm text-primary hover:bg-surface transition-colors"
                         aria-label="Remove from wishlist"
@@ -277,7 +299,7 @@ export const Profile = () => {
                       </div>
                       <div className="flex justify-between items-end mt-auto pt-sm border-t border-outline-variant/50">
                         <span className="text-price-lg font-price-lg text-on-surface">${product.price.toFixed(2)}</span>
-                        <button 
+                        <button
                           onClick={() => addToCart(product, 1)}
                           className="text-primary font-label-md text-label-md hover:underline flex items-center gap-1 active:scale-95 duration-100"
                         >
@@ -302,7 +324,7 @@ export const Profile = () => {
             <h3 className="text-headline-md font-headline-md text-on-surface border-b border-outline-variant pb-md mb-md">
               Account Settings
             </h3>
-            
+
             {editSuccess && (
               <div className="mb-md bg-green-100 text-green-800 p-sm rounded-lg text-body-sm font-semibold flex items-center gap-2">
                 <span className="material-symbols-outlined text-[18px]">check_circle</span>
@@ -313,8 +335,8 @@ export const Profile = () => {
             <form onSubmit={handleSaveSettings} className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div className="md:col-span-2">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Full Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
@@ -322,8 +344,8 @@ export const Profile = () => {
               </div>
               <div>
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Phone Number</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
@@ -331,8 +353,8 @@ export const Profile = () => {
               </div>
               <div className="md:col-span-2">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Street Address</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
@@ -340,8 +362,8 @@ export const Profile = () => {
               </div>
               <div>
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">City</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
@@ -350,8 +372,8 @@ export const Profile = () => {
               <div className="grid grid-cols-2 gap-sm">
                 <div>
                   <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">State</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={stateVal}
                     onChange={(e) => setStateVal(e.target.value)}
                     className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
@@ -359,8 +381,8 @@ export const Profile = () => {
                 </div>
                 <div>
                   <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">ZIP Code</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
                     className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
@@ -368,7 +390,7 @@ export const Profile = () => {
                 </div>
               </div>
               <div className="md:col-span-2 mt-sm">
-                <button 
+                <button
                   type="submit"
                   className="bg-primary text-on-primary font-label-md text-label-md px-lg py-2 rounded-xl shadow-sm hover:bg-primary-container active:scale-95 duration-100"
                 >
