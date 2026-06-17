@@ -123,7 +123,7 @@ export const Checkout = () => {
       };
 
       const res = await axios.post(
-        "http://localhost:2000/api/order",
+        "https://velora-e-commerce-web-app.onrender.com/api/order",
         orderData
       );
 

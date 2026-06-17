@@ -43,7 +43,7 @@ export const Profile = () => {
   useEffect(() => {
     if (user?.id) {
       axios
-        .get(`http://localhost:2000/api/order/user/${user.id}`)
+        .get(`https://velora-e-commerce-web-app.onrender.com/api/order/user/${user.id}`)
         // .then((res) => {
         //   setOrders(res.data.orders);
         // })

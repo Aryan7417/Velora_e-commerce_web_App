@@ -34,7 +34,7 @@ export const ProductDetails = () => {
     setProduct(localProduct);
   } else {
     axios
-      .get(`http://localhost:2000/api/products/${id}`)
+      .get(`https://velora-e-commerce-web-app.onrender.com/api/products/${id}`)
       .then((res) => setProduct(res.data))
       .catch((err) => console.log(err));
   }

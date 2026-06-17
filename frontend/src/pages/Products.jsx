@@ -40,7 +40,7 @@ export const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/products")
+      .get("https://velora-e-commerce-web-app.onrender.com/api/products")
       .then((res) => {
         setProducts([...dummyProducts, ...res.data]);
       })

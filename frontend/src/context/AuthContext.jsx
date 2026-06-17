@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const res = await axios.post(
-        "http://localhost:2000/api/auth/login",
+        "https://velora-e-commerce-web-app.onrender.com/api/auth/login",
         {
           email,
           password,
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (name, email, password) => {
     try {
       await axios.post(
-        "http://localhost:2000/api/auth/register",
+        "https://velora-e-commerce-web-app.onrender.com/api/auth/register",
         {
           name,
           email,

@@ -35,7 +35,7 @@ export const Signup = () => {
 
     try {
   const res = await axios.post(
-    "http://localhost:2000/api/auth/register",
+    "https://velora-e-commerce-web-app.onrender.com/api/auth/register",
     {
       name,
       email,
