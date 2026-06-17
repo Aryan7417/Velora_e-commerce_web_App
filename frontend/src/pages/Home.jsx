@@ -23,14 +23,14 @@ export const Home = () => {
         {/* Blur overlay */}
         <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
         
-        <div className="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center gap-lg">
+        <div className="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-full mx-auto flex flex-col items-center gap-lg">
           <span className="inline-block px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-md font-label-md rounded-DEFAULT tracking-wider uppercase">
             New Season Arrival
           </span>
           <h1 className="text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-on-background">
             Elevate Your Everyday Tech
           </h1>
-          <p className="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+          <p className="text-lg max-w-full mx-auto text-center">
             Discover our latest collection of premium smartwatches, immersive audio, and precision keyboards designed for the modern professional.
           </p>
           <div className="flex gap-md mt-md">
@@ -43,7 +43,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      --
+      
 
       {/* Featured Products - Asymmetric Grid */}
       <section className="py-3xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
