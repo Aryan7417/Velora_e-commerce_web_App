@@ -40,21 +40,25 @@ export const Profile = () => {
 
 
 
-useEffect(() => {
-  if (user?.id) {
-    axios
-      .get(`http://localhost:2000/api/order/user/${user.id}`)
-      .then((res) => {
-        setOrders(res.data.orders);
-      })
-      .catch((err) => console.log(err));
-  }
-}, [user]);
+  useEffect(() => {
+    if (user?.id) {
+      axios
+        .get(`http://localhost:2000/api/order/user/${user.id}`)
+        // .then((res) => {
+        //   setOrders(res.data.orders);
+        // })
+        .then((res) => {
+          console.log("Orders API =", res.data);
+          setOrders(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
 
 
-useEffect(() => {
-  console.log("Orders State =", orders);
-}, [orders]);
+  useEffect(() => {
+    console.log("Orders State =", orders);
+  }, [orders]);
 
   if (!user) {
     return null; // Redirecting...
@@ -177,7 +181,7 @@ useEffect(() => {
                 </button>
               </div>
               <div className="flex flex-col gap-4">
-                {orders.length > 0? (
+                {orders.length > 0 ? (
                   orders.slice(0, 2).map((order) => (
                     <React.Fragment key={order._id}>
                       <div className="flex justify-between items-start group hover:bg-surface-container-low p-2 -mx-2 rounded-lg transition-colors cursor-pointer">
@@ -244,7 +248,7 @@ useEffect(() => {
             <h3 className="text-headline-md font-headline-md text-on-surface border-b border-outline-variant pb-md mb-md">
               Order History
             </h3>
-            {orders.length > 0? (
+            {orders.length > 0 ? (
               <div className="flex flex-col gap-sm">
                 {orders.map((order) => (
                   <div key={order.id} className="flex justify-between items-center bg-surface-container-low rounded-xl p-md border border-outline-variant/20 hover:border-outline transition-colors">

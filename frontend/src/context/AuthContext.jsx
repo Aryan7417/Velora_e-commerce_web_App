@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -14,51 +15,99 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (email, password) => {
-    // Simulated login - accepts any email, sets standard user profile
-    const mockUser = {
-      name: email === 'alex.morgan@example.com' || email.startsWith('alex') ? "Alex Morgan" : email.split('@')[0],
-      email: email,
-      phone: "+1 (555) 123-4567",
-      tier: "Gold Tier",
-      verified: true,
-      address: {
-        street: "123 Minimalist Way, Apt 4B",
-        city: "San Francisco",
-        state: "CA",
-        zip: "94105",
-        country: "United States"
-      },
-      orders: [
-        { id: "ORD-8923", date: "Oct 24, 2023", amount: 245.00, status: "In Transit" },
-        { id: "ORD-8810", date: "Sep 12, 2023", amount: 89.50, status: "Delivered" }
-      ]
-    };
-    setUser(mockUser);
-    localStorage.setItem('velora_user', JSON.stringify(mockUser));
-    return true;
+  // const login = (email, password) => {
+  //   // Simulated login - accepts any email, sets standard user profile
+  //   const mockUser = {
+  //     name: email === 'alex.morgan@example.com' || email.startsWith('alex') ? "Alex Morgan" : email.split('@')[0],
+  //     email: email,
+  //     phone: "+1 (555) 123-4567",
+  //     tier: "Gold Tier",
+  //     verified: true,
+  //     address: {
+  //       street: "123 Minimalist Way, Apt 4B",
+  //       city: "San Francisco",
+  //       state: "CA",
+  //       zip: "94105",
+  //       country: "United States"
+  //     },
+  //     orders: [
+  //       { id: "ORD-8923", date: "Oct 24, 2023", amount: 245.00, status: "In Transit" },
+  //       { id: "ORD-8810", date: "Sep 12, 2023", amount: 89.50, status: "Delivered" }
+  //     ]
+  //   };
+  //   setUser(mockUser);
+  //   localStorage.setItem('velora_user', JSON.stringify(mockUser));
+  //   return true;
+  // };
+
+  const login = async (email, password) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:2000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+
+      setUser(res.data.user);
+
+      localStorage.setItem(
+        "velora_user",
+        JSON.stringify(res.data.user)
+      );
+
+      localStorage.setItem(
+        "velora_token",
+        res.data.token
+      );
+
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   };
 
-  const signup = (name, email, password) => {
-    const mockUser = {
-      name: name,
-      email: email,
-      phone: "+1 (555) 000-0000",
-      tier: "Bronze Tier",
-      verified: false,
-      address: {
-        street: "",
-        city: "",
-        state: "",
-        zip: "",
-        country: ""
-      },
-      orders: []
-    };
-    setUser(mockUser);
-    localStorage.setItem('velora_user', JSON.stringify(mockUser));
-    return true;
+  //signup 
+  const signup = async (name, email, password) => {
+    try {
+      await axios.post(
+        "http://localhost:2000/api/auth/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   };
+
+  // const signup = (name, email, password) => {
+  //   const mockUser = {
+  //     name: name,
+  //     email: email,
+  //     phone: "+1 (555) 000-0000",
+  //     tier: "Bronze Tier",
+  //     verified: false,
+  //     address: {
+  //       street: "",
+  //       city: "",
+  //       state: "",
+  //       zip: "",
+  //       country: ""
+  //     },
+  //     orders: []
+  //   };
+  //   setUser(mockUser);
+  //   localStorage.setItem('velora_user', JSON.stringify(mockUser));
+  //   return true;
+  // };
 
   const logout = () => {
     setUser(null);
@@ -79,3 +128,7 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => useContext(AuthContext);
 export default AuthContext;
+
+
+
+

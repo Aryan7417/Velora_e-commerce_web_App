@@ -128,6 +128,7 @@ export const Checkout = () => {
       );
 
       console.log(res.data);
+      console.log("USER =", user);
 
       setOrderId(res.data.order._id);
       setSuccess(true);
