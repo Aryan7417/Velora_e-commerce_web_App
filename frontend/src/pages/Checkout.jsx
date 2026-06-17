@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -19,7 +20,7 @@ export const Checkout = () => {
   const [zip, setZip] = useState("");
 
   const [paymentMethod, setPaymentMethod] = useState("cc"); // cc or paypal
-  
+
   // Card details
   const [cardNumber, setCardNumber] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
@@ -60,7 +61,8 @@ export const Checkout = () => {
     );
   }
 
-  const handlePlaceOrder = (e) => {
+  const handlePlaceOrder = async (e) => {
+
     e.preventDefault();
     if (!email || !firstName || !lastName || !address || !city || !zip) {
       alert("Please fill in all required shipping fields");
@@ -72,28 +74,79 @@ export const Checkout = () => {
       return;
     }
 
-    // Process mock order
-    const generatedOrderId = `ORD-${Math.floor(1000 + Math.random() * 9000)}`;
-    setOrderId(generatedOrderId);
-    setSuccess(true);
+    // // Process mock order
+    // const generatedOrderId = `ORD-${Math.floor(1000 + Math.random() * 9000)}`;
+    // setOrderId(generatedOrderId);
+    // setSuccess(true);
 
-    // If logged in, add order to history
-    if (user) {
-      const newOrder = {
-        id: generatedOrderId,
-        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-        amount: cartTotal,
-        status: "In Transit"
+    // // If logged in, add order to history
+    // if (user) {
+    //   const newOrder = {
+    //     id: generatedOrderId,
+    //     date: new Date().toLocaleDateString(),
+    //     amount: cartTotal,
+    //     status: "In Transit"
+    //   };
+    //   const updatedUser = {
+    //     ...user,
+    //     orders: [newOrder, ...(user.orders || [])]
+    //   };
+    //   updateProfile(updatedUser);
+    // }
+
+    // // Clear shopping cart
+    // clearCart();
+
+console.log("USER =", user);
+
+const orderData = {
+  user: user?._id,
+  products: cartItems.map((item) => ({
+    product: item.product._id || item.product.id,
+    quantity: item.quantity,
+  })),
+  totalAmount: cartTotal,
+};
+
+console.log("ORDER DATA =", orderData);
+
+
+
+    try {
+
+      const orderData = {
+        user: user?._id,
+        // user: user?.id || user?._id,
+
+        products: cartItems.map((item) => ({
+          product: item.product._id || item.product.id,
+          quantity: item.quantity,
+        })),
+
+        totalAmount: cartTotal,
       };
-      const updatedUser = {
-        ...user,
-        orders: [newOrder, ...(user.orders || [])]
-      };
-      updateProfile(updatedUser);
+
+      const res = await axios.post(
+        "http://localhost:2000/api/order",
+        orderData
+      );
+
+      console.log(res.data);
+
+      setOrderId(res.data.order._id);
+      setSuccess(true);
+
+      clearCart();
+
+    } catch (error) {
+      console.log(error);
+      alert("Order Failed");
     }
 
-    // Clear shopping cart
-    clearCart();
+
+
+
+
   };
 
   if (success) {
@@ -139,77 +192,77 @@ export const Checkout = () => {
               <div className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">1</div>
               <h2 className="text-headline-md font-headline-md text-on-surface">Shipping Information</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
               <div className="md:col-span-2 text-left">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Email Address *</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email" 
+                  placeholder="Enter your email"
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                 />
               </div>
               <div className="text-left">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">First Name *</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="First Name" 
+                  placeholder="First Name"
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                 />
               </div>
               <div className="text-left">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Last Name *</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  placeholder="Last Name" 
+                  placeholder="Last Name"
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                 />
               </div>
               <div className="md:col-span-2 text-left">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Address *</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Street address or P.O. Box" 
+                  placeholder="Street address or P.O. Box"
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                 />
               </div>
               <div className="md:col-span-2 text-left">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Apartment, suite, etc. (optional)</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={apartment}
                   onChange={(e) => setApartment(e.target.value)}
-                  placeholder="Apt, Suite, Unit" 
+                  placeholder="Apt, Suite, Unit"
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                 />
               </div>
               <div className="text-left">
                 <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">City *</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  placeholder="City" 
+                  placeholder="City"
                   className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                 />
               </div>
               <div className="grid grid-cols-2 gap-md text-left">
                 <div>
                   <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">State *</label>
-                  <select 
+                  <select
                     value={stateVal}
                     onChange={(e) => setStateVal(e.target.value)}
                     className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md cursor-pointer"
@@ -223,12 +276,12 @@ export const Checkout = () => {
                 </div>
                 <div>
                   <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">ZIP Code *</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     required
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
-                    placeholder="ZIP" 
+                    placeholder="ZIP"
                     className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                   />
                 </div>
@@ -242,16 +295,16 @@ export const Checkout = () => {
               <div className="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-md text-label-md font-bold">2</div>
               <h2 className="text-headline-md font-headline-md text-on-surface">Payment Method</h2>
             </div>
-            
+
             <div className="flex flex-col gap-md">
               {/* Credit Card Option */}
               <div className={`border rounded-xl p-md bg-surface-container-low transition-all ${paymentMethod === 'cc' ? 'border-primary' : 'border-outline-variant'}`}>
                 <div className="flex items-center justify-between mb-md">
                   <div className="flex items-center gap-xs">
-                    <input 
-                      type="radio" 
-                      id="cc" 
-                      name="payment" 
+                    <input
+                      type="radio"
+                      id="cc"
+                      name="payment"
                       checked={paymentMethod === 'cc'}
                       onChange={() => setPaymentMethod('cc')}
                       className="w-4 h-4 text-primary focus:ring-primary border-outline cursor-pointer"
@@ -262,47 +315,47 @@ export const Checkout = () => {
                     <span className="material-symbols-outlined block">credit_card</span>
                   </div>
                 </div>
-                
+
                 {/* CC Form */}
                 {paymentMethod === 'cc' && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-md mt-md">
                     <div className="md:col-span-2 text-left">
                       <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Card Number *</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={cardNumber}
                         onChange={(e) => setCardNumber(e.target.value)}
-                        placeholder="0000 0000 0000 0000" 
+                        placeholder="0000 0000 0000 0000"
                         className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                       />
                     </div>
                     <div className="text-left">
                       <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Expiration Date *</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={cardExpiry}
                         onChange={(e) => setCardExpiry(e.target.value)}
-                        placeholder="MM/YY" 
+                        placeholder="MM/YY"
                         className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                       />
                     </div>
                     <div className="text-left">
                       <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">CVC *</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={cardCvc}
                         onChange={(e) => setCardCvc(e.target.value)}
-                        placeholder="123" 
+                        placeholder="123"
                         className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                       />
                     </div>
                     <div className="md:col-span-2 text-left">
                       <label className="block text-body-sm font-semibold text-on-surface-variant mb-xs">Name on Card *</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={cardName}
                         onChange={(e) => setCardName(e.target.value)}
-                        placeholder="Full Name" 
+                        placeholder="Full Name"
                         className="w-full border border-outline-variant rounded px-md py-sm bg-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-body-md"
                       />
                     </div>
@@ -313,10 +366,10 @@ export const Checkout = () => {
               {/* PayPal Option */}
               <div className={`border rounded-xl p-md transition-all cursor-pointer ${paymentMethod === 'paypal' ? 'border-primary bg-surface-container-low' : 'border-outline-variant hover:bg-surface-container-low/50'}`}>
                 <div className="flex items-center gap-xs">
-                  <input 
-                    type="radio" 
-                    id="paypal" 
-                    name="payment" 
+                  <input
+                    type="radio"
+                    id="paypal"
+                    name="payment"
                     checked={paymentMethod === 'paypal'}
                     onChange={() => setPaymentMethod('paypal')}
                     className="w-4 h-4 text-primary focus:ring-primary border-outline cursor-pointer"
@@ -335,7 +388,7 @@ export const Checkout = () => {
         <div className="w-full lg:w-1/3">
           <div className="bg-surface-container-lowest rounded-xl p-xl shadow-sm border border-outline-variant/30 sticky top-24">
             <h2 className="text-headline-md font-headline-md text-on-surface mb-lg">Order Summary</h2>
-            
+
             {/* Items List */}
             <div className="flex flex-col gap-md mb-lg border-b border-outline-variant/50 pb-lg">
               {cartItems.map((item) => (
@@ -368,21 +421,21 @@ export const Checkout = () => {
                 <span>Taxes (8%)</span>
                 <span>${taxEstimate.toFixed(2)}</span>
               </div>
-              
+
               <div className="border-t border-outline-variant/50 pt-md mt-sm flex justify-between items-center text-on-surface">
                 <span className="font-headline-md text-headline-md">Total</span>
                 <span className="font-price-lg text-price-lg text-primary">${cartTotal.toFixed(2)}</span>
               </div>
             </div>
 
-            <button 
+            <button
               onClick={handlePlaceOrder}
               className="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md py-sm px-lg rounded-lg transition-colors flex items-center justify-center gap-xs active:scale-95 duration-100 shadow-sm"
             >
               <span className="material-symbols-outlined block">lock</span>
               Place Order
             </button>
-            
+
             <p className="text-center font-body-sm text-body-sm text-on-surface-variant mt-sm flex items-center justify-center gap-xs opacity-70">
               Secure checkout provided by Stripe
             </p>
